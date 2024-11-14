@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Form view definition -->
+    <record id="view_onquote_form" model="ir.ui.view">
+        <field name="name">onquote.form</field>
+        <field name="model">onquote.quotation</field>
+        <field name="arch" type="xml">
+            <form string="OnQuote Quotation">
+                <group>
+                    <field name="property_type"/>
+                    <field name="domestic_sub_property_type" modifiers="{'invisible': [('property_type', '!=', 'domestic')]}"/>
+                    <field name="commercial_sub_property_type" modifiers="{'invisible': [('property_type', '!=', 'commercial')]}"/>
+                    <!-- <field name="number_of_rooms"/> -->
+                    <field name="panel_size"/>
+                    <field name="battery_capacity"/>
+                    <field name="inverter"/>
+                    <field name="total_price"/>
+                    <field name="address"/>
+                    <field name="name"/>
+                    <field name="email"/>
+                    <field name="telephone"/>
+                    <field name="created_at"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view definition -->
+    <record id="view_onquote_tree" model="ir.ui.view">
+        <field name="name">onquote.tree</field>
+        <field name="model">onquote.quotation</field>
+        <field name="arch" type="xml">
+            <tree string="OnQuote Quotation">
+                
+                <field name="property_type"/>
+                <field name="domestic_sub_property_type"/>
+                <field name="commercial_sub_property_type"/>
+                <!-- <field name="number_of_rooms"/> -->
+                <field name="panel_size"/>
+                <field name="battery_capacity"/>
+                <field name="inverter"/>
+                <field name="total_price"/>
+                <field name="address"/>
+                <field name="name"/>
+                <field name="email"/>
+                <field name="telephone"/>
+                <field name="created_at"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action definition -->
+    <record id="action_onquote_quotation" model="ir.actions.act_window">
+        <field name="name">Quotations</field>
+        <field name="res_model">onquote.quotation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu items -->
+    <menuitem id="menu_onquote_root" name="OnQuote" sequence="5"/>
+    <menuitem id="menu_onquote_quotation" parent="menu_onquote_root" name="Quotations" action="action_onquote_quotation"/>
+
+</odoo>
